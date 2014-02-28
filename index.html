@@ -68,12 +68,77 @@ xx
   </div><!-- /.container-fluid -->
 </nav>
 
-
+<div style="display: none;" id="test">
+  <table style="width:200px;">
+    <tr>
+      <td>first</td>
+      <td>xvxcvxcvxccvxv</td>
+    </tr>
+    <tr>
+      <td>first</td>
+      <td>xvxcvxcvxccvxv</td>
+    </tr>
+    <tr>
+      <td>first</td>
+      <td>xvxcvxcvxccvxv</td>
+    </tr>
+    <tr>
+      <td>first</td>
+      <td>xvxcvxcvxccvxv</td>
+    </tr>
+    <tr>
+      <td>first 在砝码夺加中轵佣兵 有 有喹基地大跃进啊辰时是蒙面劫匪右若</td>
+      <td>xvxcvxcvxccvxv夺 或者夺右顺吉夺胯</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <button class="btn btn-primary" onclick="doPrint();">x d df</button>
+</div>
 
 <footer>
 
 </footer>
 
+<script type="text/javascript">
+  function doPrint(){
+    var cc = document.getElementById('test').innerHTML;
+    var isIe=0;
+    var frame = document.getElementById('myframe');
+          if (!frame) {
+            if (isIe) {
+              frame = document.createElement('<iframe id = "myframe"></iframe>');
+            } else {
+              frame = document.createElement('iframe');
+              frame.id ='myframe';
+              frame.setAttribute('style','width: 0pt; height: 0pt;')
+            }
+          }
+          if (isIe) {
+            frame.src = Ext.SSL_SECURE_URL;
+            var id = 'myframe';
+            var fr = document.getElementById(id);
+            fr.style.cssText= 'width: 0pt; height: 0pt;';
+          }
+          document.body.appendChild(frame);
+          if (isIe) {
+            doc = frame.contentWindow.document;
+          } else {
+            doc = frame.contentDocument;
+          }
+          doc.write(cc);
+          doc.close();
+          frame.contentWindow.focus();
+          if(isIe){
+            setTimeout(function(){
+              frame.contentWindow.print();
+            },2);
+          }else{
+            frame.contentWindow.print();
+          }
+  }
+  
+</script>
 <script src="res/jquery-1.10.1.js"></script>
 <script src="res/bt/dist/js/bootstrap.js"></script>
 </body>
