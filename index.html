@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="phonecatApp">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,7 @@
  
 </head>
 
-<body>
-xx
+<body ng-controller="PhoneListCtrl">
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -47,7 +46,7 @@ xx
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" ng-model="query" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -67,79 +66,55 @@ xx
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<br>
+<style type="text/css">
+    #test-ul > li {
+        border: 1px dotted #FF9900 ;
+        margin: 0px 0px 7px 0px ;
+        padding: 5px 5px 5px 5px ;
+    }
 
-<div style="display: none;" id="test">
-  <table style="width:200px;">
-    <tr>
-      <td>first</td>
-      <td>xvxcvxcvxccvxv</td>
-    </tr>
-    <tr>
-      <td>first</td>
-      <td>xvxcvxcvxccvxv</td>
-    </tr>
-    <tr>
-      <td>first</td>
-      <td>xvxcvxcvxccvxv</td>
-    </tr>
-    <tr>
-      <td>first</td>
-      <td>xvxcvxcvxccvxv</td>
-    </tr>
-    <tr>
-      <td>first 在砝码夺加中轵佣兵 有 有喹基地大跃进啊辰时是蒙面劫匪右若</td>
-      <td>xvxcvxcvxccvxv夺 或者夺右顺吉夺胯</td>
-    </tr>
-  </table>
+</style>
+<div ng-show="query">
+  <ul id="test-ul">
+    <li ng-repeat="phone in phones| filter:query" ng-show="([phone.name]|filter:query).length">
+      {{phone.name}} {{([phone.name]|filter:query).length}}
+      <p>{{phone.snippet}}</p>
+    </li>
+    
+  </ul>
 </div>
+
+<p>Total number of phones: {{phones.length}}</p>
+<p>Hello, {{name}}!</p>
+
+<table>
+  <tr><th>row number</th></tr>
+  <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i+1}}</td></tr>
+</table>
+
+
+
+
+
+
+
+
+
+
 <div>
-  <button class="btn btn-primary" onclick="doPrint();">x d df</button>
+  <button class="btn btn-primary" onclick="doPrint();">btn</button>
 </div>
 
 <footer>
 
 </footer>
 
-<script type="text/javascript">
-  function doPrint(){
-    var cc = document.getElementById('test').innerHTML;
-    var isIe=0;
-    var frame = document.getElementById('myframe');
-          if (!frame) {
-            if (isIe) {
-              frame = document.createElement('<iframe id = "myframe"></iframe>');
-            } else {
-              frame = document.createElement('iframe');
-              frame.id ='myframe';
-              frame.setAttribute('style','width: 0pt; height: 0pt;')
-            }
-          }
-          if (isIe) {
-            frame.src = Ext.SSL_SECURE_URL;
-            var id = 'myframe';
-            var fr = document.getElementById(id);
-            fr.style.cssText= 'width: 0pt; height: 0pt;';
-          }
-          document.body.appendChild(frame);
-          if (isIe) {
-            doc = frame.contentWindow.document;
-          } else {
-            doc = frame.contentDocument;
-          }
-          doc.write(cc);
-          doc.close();
-          frame.contentWindow.focus();
-          if(isIe){
-            setTimeout(function(){
-              frame.contentWindow.print();
-            },2);
-          }else{
-            frame.contentWindow.print();
-          }
-  }
-  
-</script>
-<script src="res/jquery-1.10.1.js"></script>
-<script src="res/bt/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="res/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="res/angular.js"></script>
+<script type="text/javascript" src="js/ng.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="res/bt/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
